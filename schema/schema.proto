@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "./schema";
+
+import "google/protobuf/empty.proto";
+
+package schema;
+
+service TodoManager {
+  rpc AddTodo(Todo) returns (google.protobuf.Empty) {}
+  rpc ReadTodos(google.protobuf.Empty) returns (Todos) {}
+}
+
+message Todo {
+  string name = 1;
+}
+
+message Todos {
+  repeated Todo todos = 1;
+}
